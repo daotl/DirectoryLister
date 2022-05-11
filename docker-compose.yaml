@@ -18,6 +18,11 @@ services:
       - /data/public:/var/www/html
       - ./.docker/php/config/php.ini:/usr/local/etc/php/php.ini
       - ./.docker/apache2/config/000-default.conf:/etc/apache2/sites-available/000-default.conf
+    networks:
+      - default
+      - web
+    expose:
+      - 80
     labels:
       traefik.enable: "true"
       traefik.http.routers.directoryLister.entryPoints: web
