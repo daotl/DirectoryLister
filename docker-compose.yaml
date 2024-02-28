@@ -24,10 +24,8 @@ services:
     expose:
       - 80
     labels:
-      traefik.enable: "true"
-      traefik.http.routers.directoryLister.entryPoints: web
-      traefik.http.routers.directoryLister.tls.certResolver: default
-      traefik.http.routers.directoryLister.rule: Host(`public.example.com`)
+      caddy: public.example.com
+      caddy.reverse_proxy: '{{upstreams}}'
 
   memcached:
     container_name: directory-lister-memcached
